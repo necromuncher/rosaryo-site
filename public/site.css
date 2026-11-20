@@ -134,3 +134,40 @@ a:hover { color: #fff; }
   html { scroll-behavior: auto; }
   .translate-suggestion { animation: none; }
 }
+.donate-menu { position: relative; }
+.donate-menu > summary { list-style: none; cursor: pointer; }
+.donate-menu > summary::-webkit-details-marker { display: none; }
+.donate-options {
+  position: absolute; right: 0; top: calc(100% + .55rem); z-index: 20;
+  min-width: 145px; padding: .45rem; border: 1px solid var(--line); border-radius: 12px;
+  background: #16264a; box-shadow: 0 12px 28px rgba(0, 0, 0, .35);
+}
+.donate-options a { display: block; padding: .35rem .65rem; border-radius: 8px; text-decoration: none; font-size: .95rem; }
+.donate-options a:hover { background: rgba(201, 162, 75, .18); color: #fff; }
+.donate-links { display: inline-flex; align-items: center; gap: .55rem; white-space: nowrap; }
+.donate-label { color: var(--mist); font-size: .95rem; }
+.donate-option {
+  display: inline-flex; align-items: center; gap: .35rem; padding: .32rem .65rem;
+  border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .04);
+  color: var(--gold-pale); font: inherit; font-size: .82rem; line-height: 1;
+  text-decoration: none; cursor: pointer;
+}
+.donate-option:hover { border-color: var(--gold); color: #fff; background: rgba(201, 162, 75, .12); }
+.donate-icon,
+.donate-icon svg,
+.paypal-icon,
+.gcash-icon { display: none; }
+.gcash-dialog {
+  width: min(420px, calc(100% - 2rem)); padding: 1.25rem; border: 1px solid var(--line);
+  border-radius: 18px; background: var(--midnight); color: var(--ivory); text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .65);
+}
+.gcash-dialog::backdrop { background: rgba(7, 13, 29, .78); backdrop-filter: blur(4px); }
+.gcash-dialog h2 { margin: 0 2rem .8rem; font-size: 1.25rem; }
+.gcash-dialog img { display: block; width: 75%; max-width: 75%; max-height: 70vh; height: auto; margin: auto; border-radius: 10px; }
+.gcash-qr-wrap { width: 75%; margin: auto; }
+.gcash-qr-wrap img { display: block; width: 100%; max-height: 70vh; height: auto; margin: auto; border-radius: 10px; }
+.gcash-close {
+  position: absolute; right: .75rem; top: .55rem; border: 0; background: none;
+  color: var(--mist); font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
