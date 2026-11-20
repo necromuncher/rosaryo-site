@@ -14,6 +14,10 @@
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
+<aside id="translate-suggestion" class="translate-suggestion" role="region" aria-label="Translation suggestion" hidden>
+  <span id="translate-message">Translate this page using Google Translate</span>
+  <a id="translate-link" class="translate-link" href="#" rel="noopener noreferrer" target="_blank">Translate</a>
+</aside>
 <a class="skip" href="#main">Skip to content</a>
 <header class="wrap bar">
   <a class="mark" href="/">Rosaryo</a>
@@ -67,5 +71,49 @@
   <span>© 2026 Erwin Alegro. Made in the Philippines.</span>
   <a href="/">Back to Rosaryo</a>
 </footer>
+<script>
+(function () {
+  const supported = new Set(['fil','en','es','fr','de','pt','it','nl','ja','ko','zh','ar','hi','id','ms','th','vi','ru','uk','tr','pl']);
+  const locale = (navigator.languages && navigator.languages.length
+    ? navigator.languages[0]
+    : navigator.language || 'en').toLowerCase();
+  let language = locale.split('-')[0];
+
+  if (language === 'tl') language = 'fil';
+  if (!supported.has(language) || language === 'en') return;
+
+  const translations = {
+    fil: ['Isalin ang patakarang ito', 'Tingnan ang pahinang ito sa Filipino gamit ang Google Translate.'],
+    es: ['Traducir esta política', 'Consulta esta página en español con Google Translate.'],
+    fr: ['Traduire cette politique', 'Consultez cette page en français avec Google Translate.'],
+    de: ['Diese Richtlinie übersetzen', 'Diese Seite auf Deutsch mit Google Translate ansehen.'],
+    pt: ['Traduzir esta política', 'Veja esta página em português usando o Google Translate.'],
+    it: ['Traduci questa informativa', 'Consulta questa pagina in italiano con Google Translate.'],
+    nl: ['Dit beleid vertalen', 'Bekijk deze pagina in het Nederlands met Google Translate.'],
+    ja: ['このポリシーを翻訳', 'Google Translateでこのページを日本語で表示します。'],
+    ko: ['이 방침 번역', 'Google Translate로 이 페이지를 한국어로 확인하세요.'],
+    zh: ['翻译此政策', '使用 Google 翻译以您所用的语言查看此页面。'],
+    ar: ['ترجمة هذه السياسة', 'اعرض هذه الصفحة بلغتك باستخدام Google Translate.'],
+    hi: ['इस नीति का अनुवाद करें', 'Google Translate का उपयोग करके यह पृष्ठ अपनी भाषा में देखें।'],
+    id: ['Terjemahkan kebijakan ini', 'Lihat halaman ini dalam bahasa Indonesia menggunakan Google Translate.'],
+    ms: ['Terjemah dasar ini', 'Lihat halaman ini dalam Bahasa Melayu menggunakan Google Translate.'],
+    th: ['แปลนโยบายนี้', 'ดูหน้านี้เป็นภาษาไทยด้วย Google Translate'],
+    vi: ['Dịch chính sách này', 'Xem trang này bằng tiếng Việt bằng Google Translate.'],
+    ru: ['Перевести эту политику', 'Посмотреть эту страницу на русском языке через Google Translate.'],
+    uk: ['Перекласти цю політику', 'Переглянути цю сторінку українською за допомогою Google Translate.'],
+    tr: ['Bu politikayı çevir', 'Bu sayfayı Google Translate ile Türkçe görüntüleyin.'],
+    pl: ['Przetłumacz tę politykę', 'Wyświetl tę stronę po polsku za pomocą Google Translate.']
+  };
+
+  const [heading, message] = translations[language] || translations.fil;
+  const pageUrl = new URL(location.href);
+  const translateUrl = 'https://translate.google.com/translate?sl=en&tl=' + encodeURIComponent(language) + '&u=' + encodeURIComponent(pageUrl.href);
+
+  document.getElementById('translate-message').textContent = message;
+  document.getElementById('translate-link').href = translateUrl;
+  document.getElementById('translate-link').textContent = language === 'fil' ? 'Isalin' : 'Translate';
+  document.getElementById('translate-suggestion').hidden = false;
+})();
+</script>
 </body>
 </html>
