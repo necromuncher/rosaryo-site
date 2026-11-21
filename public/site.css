@@ -226,6 +226,8 @@ main.contact-page { font-size: 1.25rem; }
 #site-header a { text-decoration: none; }
 
 @media (max-width: 860px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  .wrap { width: calc(100% - 2rem); }
   .hero, .split { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero { padding-bottom: 3rem; }
   .features { grid-template-columns: 1fr; }
@@ -238,14 +240,17 @@ main.contact-page { font-size: 1.25rem; }
   .bar > .mobile-menu { display: block; grid-area: menu; justify-self: end; }
   .bar > .mobile-donate { display: flex; grid-area: donate; width: 100%; justify-content: center; align-items: center; gap: .55rem; }
   .foot {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;
+    width: 100%;
+    max-width: 100%;
     justify-items: center;
+    align-items: center;
     text-align: center;
   }
-  .copyright { grid-column: 1; grid-row: 1; justify-self: center; }
-  .footer-donate { grid-column: 1; grid-row: 2; justify-self: center; }
-  .footer-links { grid-column: 1; grid-row: 3; justify-self: center; }
+  .copyright { grid-column: 1; grid-row: 1; width: 100%; justify-self: center; text-align: center; }
+  .footer-links { grid-column: 1; grid-row: 2; width: 100%; max-width: 100%; justify-self: center; flex-wrap: wrap; justify-content: center; text-align: center; }
+  .footer-donate { grid-column: 1; grid-row: 3; width: 100%; max-width: 100%; justify-self: center; flex-wrap: wrap; justify-content: center; text-align: center; }
   .beta { background-attachment: scroll; }
   .beta-form { grid-template-columns: 1fr; }
   .beta-form label:nth-of-type(3),
@@ -372,7 +377,7 @@ main.contact-page { font-size: 1.25rem; }
     right: 0;
     top: 0;
     height: 30px;
-    padding: 0 .75rem;
+    padding: 0 1.25rem 0 .75rem;
   }
 }
 
@@ -414,5 +419,41 @@ main.contact-page { font-size: 1.25rem; }
 :root[data-theme="light"] .cookie-banner button { background: #f7f1e3; color: #0e1a33; border-color: #0e1a33; }
 .cookie-banner button:hover { background: var(--gold); color: #1a1300; }
 @media (max-width: 860px) {
-  .cookie-banner { align-items: flex-start; padding: .55rem .75rem; }
+  #site-footer .foot {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-items: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  #site-footer .copyright {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+  #site-footer .footer-links {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-self: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
+  }
+  #site-footer .footer-donate {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-self: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
+  }
 }
