@@ -1,0 +1,13 @@
+const path = require('path');
+
+module.exports = {
+  entry: './src/js/app.js',
+  output: {
+    path: path.resolve(__dirname, 'public'),
+    filename: 'app.min.js',
+    clean: false
+  },
+  optimization: {
+    minimize: true
+  }
+};

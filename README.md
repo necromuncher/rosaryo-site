@@ -42,3 +42,19 @@ Cloudflare deploys serve the new static asset files automatically. Browsers cann
 ## 5. Keep the policy true
 The policy says the app sends no data anywhere. That is only accurate once the app's fonts are bundled
 inside the app (not loaded from Google Fonts). Update this policy whenever the app's behaviour changes.
+
+## 6. Production assets
+
+- Sass source: `src/sass/site.scss`
+- JavaScript entry: `src/js/app.js`
+- Build minified deployment assets:
+```bash
+npm install
+npm run build
+```
+- Build and deploy:
+```bash
+npm run deploy
+```
+
+`npm run build` produces `public/site.css` and `public/app.min.js`. Deployments should use `npm run deploy` rather than calling Wrangler directly.
