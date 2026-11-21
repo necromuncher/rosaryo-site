@@ -58,3 +58,15 @@ npm run deploy
 ```
 
 `npm run build` produces `public/site.css` and `public/app.min.js`. Deployments should use `npm run deploy` rather than calling Wrangler directly.
+
+## 7. Date-based release branches
+
+Create a branch for each deployment date:
+
+```bash
+git switch -c release/$(Get-Date -Format yyyyMMdd)
+git push -u origin release/$(Get-Date -Format yyyyMMdd)
+npm run deploy
+```
+
+PowerShell example for today: `release/20261121`. Use a new date-based branch whenever tomorrow's changes are deployed. Deploy only from the active release branch.
