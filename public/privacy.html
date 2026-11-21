@@ -13,17 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-page="privacy">
+<div id="site-header"></div>
 <aside id="translate-suggestion" class="translate-suggestion" role="region" aria-label="Translation suggestion" hidden>
   <span id="translate-message">Translate this page using Google Translate</span>
   <a id="translate-link" class="translate-link" href="#" rel="noopener noreferrer" target="_blank">Translate</a>
 </aside>
-<a class="skip" href="#main">Skip to content</a>
-<header class="wrap bar">
-  <a class="mark" href="/">Rosaryo</a>
-  <nav aria-label="Site"><a href="/">Home</a></nav>
-</header>
-
 <main id="main" class="wrap doc">
   <h1>Privacy policy</h1>
   <p class="meta">Effective November 4, 2026</p>
@@ -67,14 +62,12 @@
   <p>Questions about this policy can be sent to <a href="mailto:erwin.alegro@gmail.com?subject=Rosaryo%20beta">erwin.alegro@gmail.com</a>.</p>
 </main>
 
-<footer class="wrap foot">
-  <span class="copyright">© 2026 Erwin Alegro. Made in the Philippines.</span>
-  <nav class="footer-links" aria-label="Footer">
-    <a href="/">Home</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="contact.html">Contact Us</a>
-  </nav>
-</footer>
+<div id="site-footer"></div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="theme.js"></script>
+<script src="gcash.js"></script>
+<script src="cookies.js"></script>
 <script>
 (function () {
   const supported = new Set(['fil','en','es','fr','de','pt','it','nl','ja','ko','zh','ar','hi','id','ms','th','vi','ru','uk','tr','pl']);

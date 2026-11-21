@@ -17,33 +17,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="wrap bar">
-  <a class="mark" href="/">Rosaryo</a>
-  <nav class="nav-links" aria-label="Site">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="contact.html">Contact Us</a>
-    <span class="donate-links"><span class="donate-label">Donate:</span>
-      <a class="donate-option paypal-link" href="https://www.paypal.com/donate/?business=ealegro%40gmail.com&amp;no_recurring=0&amp;item_name=Support%20Rosaryo&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Donate with PayPal">PayPal</a>
-      <button class="donate-option gcash-link" type="button" data-gcash-open aria-label="Donate with GCash">GCash</button>
-    </span>
-  </nav>
-
-  <details class="mobile-menu">
-    <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
-    <nav aria-label="Mobile site">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="contact.html">Contact Us</a>
-    </nav>
-  </details>
-
-  <span class="mobile-donate">
-    <span class="donate-label">Donate:</span>
-    <a class="donate-option paypal-link" href="https://www.paypal.com/donate/?business=ealegro%40gmail.com&amp;no_recurring=0&amp;item_name=Support%20Rosaryo&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Donate with PayPal">PayPal</a>
-    <button class="donate-option gcash-link" type="button" data-gcash-open aria-label="Donate with GCash">GCash</button>
-  </span>
-</header>
+<body data-page="home">
+<div id="site-header"></div>
 
 <main id="main">
   <section class="wrap hero">
@@ -192,26 +167,12 @@
   </section>
 </main>
 
-<footer class="wrap foot">
-  <span class="copyright">© 2026 Erwin Alegro. Made in the Philippines.</span>
-  <span class="footer-donate"><span class="donate-label">Donate:</span>
-    <a class="donate-option paypal-link" href="https://www.paypal.com/donate/?business=ealegro%40gmail.com&amp;no_recurring=0&amp;item_name=Support%20Rosaryo&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Donate with PayPal">PayPal</a>
-    <button class="donate-option gcash-link" type="button" data-gcash-open aria-label="Donate with GCash">GCash</button>
-  </span>
-  <nav class="footer-links" aria-label="Footer">
-    <a href="/">Home</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="contact.html">Contact Us</a>
-  </nav>
-</footer>
-<dialog id="gcash-dialog" class="gcash-dialog" aria-labelledby="gcash-title">
-  <button class="gcash-close" type="button" data-gcash-close aria-label="Close GCash QR">×</button>
-  <h2 id="gcash-title">Donate with GCash</h2>
-  <div class="gcash-qr-wrap">
-    <img src="assets/Gcash-ealegro.jfif" alt="GCash QR code for Erwin Alegro">
-  </div>
-</dialog>
+<div id="site-footer"></div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
 <script src="gcash.js"></script>
 <script src="beta.js"></script>
+<script src="theme.js"></script>
+<script src="cookies.js"></script>
 </body>
 </html>
