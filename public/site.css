@@ -226,19 +226,74 @@ main.contact-page { font-size: 1.25rem; }
 #site-header a { text-decoration: none; }
 
 @media (max-width: 860px) {
-  html, body { max-width: 100%; overflow-x: hidden; }
+  html, body { max-width: 100%; }
+  body { padding-top: 104px; }
+  #site-header {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .bar {
+    position: relative;
+  }
   .wrap { width: calc(100% - 2rem); }
   .hero, .split { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero { padding-bottom: 3rem; }
   .features { grid-template-columns: 1fr; }
   .split, .features, .beta { padding-block: 3rem; }
-  .bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas:
-    "logo menu"
-    "donate donate"; align-items: center; row-gap: .65rem; }
+  .bar {
+    display: grid;
+    width: calc(100% - 2rem);
+    max-width: none;
+    margin-inline: auto;
+    padding: 1.4rem 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "logo menu";
+    align-items: center;
+  }
+  #site-header .mark {
+    font-size: 1.75rem;
+  }
   .bar > .mark { grid-area: logo; justify-self: start; }
   .bar > .nav-links { display: none !important; }
   .bar > .mobile-menu { display: block; grid-area: menu; justify-self: end; }
-  .bar > .mobile-donate { display: flex; grid-area: donate; width: 100%; justify-content: center; align-items: center; gap: .55rem; }
+  .mobile-menu nav {
+    min-width: 240px;
+    padding-bottom: .75rem;
+  }
+  .mobile-menu nav .mobile-donate {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "label label"
+      "paypal gcash";
+    gap: .5rem;
+    margin: .5rem .7rem .25rem;
+    padding: .55rem 0 .25rem;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-donate-label {
+    grid-area: label;
+  }
+  .mobile-menu nav .paypal-link {
+    grid-area: paypal;
+  }
+  .mobile-menu nav .gcash-link {
+    grid-area: gcash;
+  }
+  .mobile-menu nav .donate-option {
+    display: inline-flex;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    margin: 0;
+    padding: .32rem .65rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
   .foot {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;
@@ -302,11 +357,17 @@ main.contact-page { font-size: 1.25rem; }
 
 /* mobile menu */
 .mobile-menu { display: none; position: relative; }
-.mobile-menu summary { list-style: none; width: 44px; height: 44px; display: grid; place-content: center; gap: 5px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+.mobile-menu summary { list-style: none; width: 44px; height: 44px; display: grid; place-content: center; gap: 5px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; background: var(--midnight); }
 .mobile-menu summary::-webkit-details-marker { display: none; }
 .mobile-menu summary span { display: block; width: 19px; height: 2px; background: var(--gold-pale); }
-.mobile-menu nav { position: absolute; right: 0; top: calc(100% + .5rem); z-index: 30; min-width: 180px; padding: .5rem; border: 1px solid var(--line); border-radius: 12px; background: #16264a; box-shadow: 0 12px 28px rgba(0,0,0,.35); }
+.mobile-menu nav { position: absolute; right: 0; top: calc(100% + .5rem); z-index: 30; width: min(300px, calc(100vw - 2rem)); min-width: 280px; padding: .5rem; padding-bottom: .75rem; border: 1px solid var(--line); border-radius: 12px; background: var(--vespers); color: var(--ivory); box-shadow: 0 12px 28px rgba(0,0,0,.35); }
 .mobile-menu nav a { display: block; padding: .55rem .7rem; text-decoration: none; }
+.mobile-menu nav .paypal-link {
+  text-align: center;
+  justify-content: center;
+}
+:root[data-theme="light"] .mobile-menu summary,
+:root[data-theme="light"] .mobile-menu nav { background: var(--vespers); }
 
 /* contact page */
 .contact-page { max-width: 44rem; padding: 2.5rem 0 4rem; }
@@ -350,8 +411,8 @@ main.contact-page { font-size: 1.25rem; }
 .accessibility-toolbar {
   position: fixed; top: 0; right: 0; left: 0; z-index: 200;
   min-height: 30px; height: 30px;
-  display: flex; align-items: center; justify-content: flex-end; gap: .35rem;
-  padding: 0 1.5rem;
+  display: flex; align-items: flex-start; justify-content: flex-end; gap: .35rem;
+  padding: 5px 1.5rem 0;
   background: rgba(14, 26, 51, .10);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -377,7 +438,7 @@ main.contact-page { font-size: 1.25rem; }
     right: 0;
     top: 0;
     height: 30px;
-    padding: 0 1.25rem 0 .75rem;
+    padding: 5px 1.25rem 0 .75rem;
   }
 }
 

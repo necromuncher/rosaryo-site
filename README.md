@@ -32,6 +32,13 @@ Your privacy policy URL for Google Play is that address plus `/privacy`.
 Dashboard alternative: Workers & Pages → Create → upload the `public` folder.
 Custom domain (optional): if ealegro.com is on Cloudflare, add `rosaryo.ealegro.com` under the Worker's Domains & Routes.
 
-## 4. Keep the policy true
+## 4. Cache policy
+
+- HTML pages, JavaScript, CSS, and files in `public/assets/` are set to `no-store, no-cache, must-revalidate`.
+- This prevents browsers and Cloudflare edge caches from retaining deployed copies.
+
+Cloudflare deploys serve the new static asset files automatically. Browsers cannot be remotely cleared; the no-store policy prevents them from retaining copies, while must-revalidate ensures cached intermediaries check for the newest response.
+
+## 5. Keep the policy true
 The policy says the app sends no data anywhere. That is only accurate once the app's fonts are bundled
 inside the app (not loaded from Google Fonts). Update this policy whenever the app's behaviour changes.

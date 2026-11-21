@@ -31,12 +31,12 @@
       <a href="/">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="contact.html">Contact Us</a>
+      <div class="mobile-donate">
+        <span class="mobile-donate-label">Buy Me A Coffee</span>
+        <a class="donate-option paypal-link" href="https://www.paypal.com/donate/?business=ealegro%40gmail.com&amp;no_recurring=0&amp;item_name=Support%20Rosaryo&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Donate with PayPal">PayPal</a>
+        <button class="donate-option gcash-link" type="button" data-gcash-open aria-label="Donate with GCash">GCash</button>
+      </div>
     </nav>
   </details>
-  <span class="mobile-donate">
-    <span class="donate-label">Buy Me A Coffee:</span>
-    <a class="donate-option paypal-link" href="https://www.paypal.com/donate/?business=ealegro%40gmail.com&amp;no_recurring=0&amp;item_name=Support%20Rosaryo&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Donate with PayPal">PayPal</a>
-    <button class="donate-option gcash-link" type="button" data-gcash-open aria-label="Donate with GCash">GCash</button>
-  </span>
 </header>`;
 })();

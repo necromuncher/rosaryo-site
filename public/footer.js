@@ -20,6 +20,6 @@
 <dialog id="gcash-dialog" class="gcash-dialog" aria-labelledby="gcash-title">
   <button class="gcash-close" type="button" data-gcash-close aria-label="Close GCash QR">×</button>
   <h2 id="gcash-title">Donate with GCash</h2>
-  <div class="gcash-qr-wrap"><img src="assets/Gcash-ealegro.jfif" alt="GCash QR code for Erwin Alegro"></div>
+  <div class="gcash-qr-wrap"><img src="assets/Gcash-ealegro.jfif" alt="GCash QR code for Erwin Alegro" loading="lazy" decoding="async"></div>
 </dialog>`;
 })();
