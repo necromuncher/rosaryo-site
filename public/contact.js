@@ -1,4 +1,5 @@
 const form = document.getElementById('contact-form');
+if (form) {
 const question = document.getElementById('captcha-question');
 const answer = document.getElementById('captcha-answer');
 const submitButton = form.querySelector('[type="submit"]');
@@ -56,3 +57,4 @@ form.addEventListener('submit', async (event) => {
     submitButton.textContent = 'Send Inquiry →';
   }
 });
+}
