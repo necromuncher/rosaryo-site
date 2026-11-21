@@ -17,3 +17,6 @@
 
 /assets/*
   Cache-Control: no-store, no-cache, must-revalidate
+
+/assets/*.jpg
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

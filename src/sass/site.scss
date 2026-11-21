@@ -71,7 +71,7 @@ a:hover { color: var(--link-hover); }
 .mark { font-family: 'Cinzel', serif; font-size: 1.25rem; letter-spacing: .22em; color: var(--gold-pale); text-decoration: none; }
 
 /* hero */
-.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; padding: 2rem 0 5rem; width: calc(100% - 2rem); max-width: none; padding-bottom: 3rem; }
+.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; width: min(1100px, 100% - 3rem); max-width: 1100px; margin-inline: auto; padding: 2rem 0 5rem; }
 .hero h1 { font-size: clamp(2.3rem, 5.2vw, 3.9rem); letter-spacing: .02em; margin-bottom: 1.25rem; }
 .lede { font-size: 1.45rem; color: var(--ivory); max-width: 30ch; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 2rem; }
@@ -85,10 +85,11 @@ a:hover { color: var(--link-hover); }
 
 /* rosary ring + phone */
 .ring-wrap { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin-inline: auto; }
-.ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: center; animation: ring-spin 30s linear infinite; }
 .ring .string { stroke: var(--line); stroke-width: 2; }
 .ring .bead { fill: url(#g); opacity: 0; transform-box: fill-box; transform-origin: center; animation: bead-on .5s ease-out forwards; animation-delay: calc(var(--i) * 32ms + 250ms); }
 @keyframes bead-on { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: none; } }
+@keyframes ring-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .phone {
   position: absolute; left: 50%; top: 50%; width: 37%; aspect-ratio: 9 / 18.5; transform: translate(-50%, -50%);
   border-radius: 14% / 6.8%; border: 1px solid rgba(255, 255, 255, .18); padding: 1.6%;
@@ -226,7 +227,8 @@ main.contact-page { font-size: 1.25rem; }
 #site-header a { text-decoration: none; }
 
 @media (max-width: 860px) {
-  html, body { max-width: 100%; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  html { overflow-x: clip; }
   body { padding-top: 104px; }
   #site-header {
     position: fixed;
@@ -235,18 +237,15 @@ main.contact-page { font-size: 1.25rem; }
     right: 0;
     z-index: 100;
   }
-  .bar {
-    position: relative;
-  }
+  .bar { position: relative; }
   .wrap { width: calc(100% - 2rem); }
   .hero, .split { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero { padding-bottom: 3rem; }
+  .hero { width: calc(100% - 2rem); max-width: none; padding-bottom: 3rem; }
+  .hero-copy,
+  .hero h1,
   p.lede,
   .hero p.lede,
-  .hero .lede {
-    width: 100%;
-    max-width: none !important;
-  }
+  .hero .lede { width: 100%; max-width: none !important; }
   .hero .actions {
     width: 100%;
     flex-direction: column;
@@ -255,9 +254,7 @@ main.contact-page { font-size: 1.25rem; }
     text-align: center;
   }
   .hero .actions .btn,
-  .hero .actions .soon {
-    margin-inline: auto;
-  }
+  .hero .actions .soon { margin-inline: auto; }
   .features { grid-template-columns: 1fr; }
   .split, .features, .beta { padding-block: 3rem; }
   .bar {
@@ -270,69 +267,15 @@ main.contact-page { font-size: 1.25rem; }
     grid-template-areas: "logo menu";
     align-items: center;
   }
-  #site-header .mark {
-    font-size: 1.75rem;
-  }
+  #site-header .mark { font-size: 1.75rem; }
   .bar > .mark { grid-area: logo; justify-self: start; }
   .bar > .nav-links { display: none !important; }
   .bar > .mobile-menu { display: block; grid-area: menu; justify-self: end; }
-  .mobile-menu nav {
-    min-width: 240px;
-    padding-bottom: .75rem;
-  }
-  .mobile-menu nav .mobile-donate {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "label label"
-      "paypal gcash";
-    gap: .5rem;
-    margin: .5rem .7rem .25rem;
-    padding: .55rem 0 .25rem;
-    border-top: 1px solid var(--line);
-  }
-  .mobile-donate-label {
-    grid-area: label;
-  }
-  .mobile-menu nav .paypal-link {
-    grid-area: paypal;
-  }
-  .mobile-menu nav .gcash-link {
-    grid-area: gcash;
-  }
-  .mobile-menu nav .donate-option {
-    display: inline-flex;
-    width: 100%;
-    min-width: 0;
-    height: 38px;
-    margin: 0;
-    padding: .32rem .65rem;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .foot {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto auto;
-    width: 100%;
-    max-width: 100%;
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-  }
-  .copyright { grid-column: 1; grid-row: 1; width: 100%; justify-self: center; text-align: center; }
-  .footer-links { grid-column: 1; grid-row: 2; width: 100%; max-width: 100%; justify-self: center; flex-wrap: wrap; justify-content: center; text-align: center; }
-  .footer-donate { grid-column: 1; grid-row: 3; width: 100%; max-width: 100%; justify-self: center; flex-wrap: wrap; justify-content: center; text-align: center; }
-  .beta { background-attachment: scroll; }
-  .beta-form { grid-template-columns: 1fr; }
-  .beta-form label:nth-of-type(3),
-  .beta-submit,
-  .beta-status { grid-column: 1; }
+  .ring-wrap { max-width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .ring { animation: none; }
   .ring .bead { animation: none; opacity: 1; }
-  html { scroll-behavior: auto; }
-  .translate-suggestion { animation: none; }
 }
 .donate-menu { position: relative; }
 .donate-menu > summary { list-style: none; cursor: pointer; }
@@ -358,20 +301,62 @@ main.contact-page { font-size: 1.25rem; }
 .paypal-icon,
 .gcash-icon { display: none; }
 .gcash-dialog {
-  width: min(420px, calc(100% - 2rem)); padding: 1.25rem; border: 1px solid var(--line);
-  border-radius: 18px; background: var(--midnight); color: var(--ivory); text-align: center;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, .65);
+  width: fit-content;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  margin: auto;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(22, 38, 74, .98), rgba(14, 26, 51, .98));
+  color: var(--ivory);
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .65), inset 0 1px rgba(255, 255, 255, .08);
 }
-.gcash-dialog::backdrop { background: rgba(7, 13, 29, .78); backdrop-filter: blur(4px); }
-.gcash-dialog h2 { margin: 0 2rem .8rem; font-size: 1.25rem; }
-.gcash-dialog img { display: block; width: 75%; max-width: 75%; max-height: 70vh; height: auto; margin: auto; border-radius: 10px; }
-.gcash-qr-wrap { width: 85%; margin: auto; }
-.gcash-qr-wrap img { display: block; width: 100%; max-height: 70vh; height: auto; margin: auto; border-radius: 10px; }
+.gcash-dialog::backdrop {
+  background: rgba(7, 13, 29, .68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.gcash-dialog h2 { margin: 0 2.75rem .75rem 2.75rem; font-size: 1.25rem; }
+.gcash-qr-wrap {
+  width: min(819px, 80vw);
+  max-width: calc(100vw - 4rem);
+  max-height: calc(100vh - 7rem);
+  display: grid;
+  place-items: center;
+  margin: auto;
+}
+.gcash-qr-wrap img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  max-height: calc(100vh - 7rem);
+  margin: auto;
+  border: 6px solid rgba(255, 255, 255, .96);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .42);
+}
 .gcash-close {
-  position: absolute; right: .75rem; top: .55rem; border: 0; background: none;
-  color: var(--mist); font-size: 1.6rem; line-height: 1; cursor: pointer;
+  position: absolute;
+  right: .65rem;
+  top: .65rem;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(14, 26, 51, .92);
+  color: var(--gold-pale);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
 }
-
+.gcash-close:hover { background: var(--gold); color: #1a1300; }
 /* mobile menu */
 .mobile-menu { display: none; position: relative; }
 .mobile-menu summary { list-style: none; width: 44px; height: 44px; display: grid; place-content: center; gap: 5px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; background: var(--midnight); }
@@ -385,7 +370,31 @@ main.contact-page { font-size: 1.25rem; }
 }
 :root[data-theme="light"] .mobile-menu summary,
 :root[data-theme="light"] .mobile-menu nav { background: var(--vespers); }
-
+.mobile-menu nav .mobile-donate {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "label label"
+      "paypal gcash";
+    gap: .5rem;
+    margin: .5rem .7rem .25rem;
+    padding: .55rem 0 .25rem;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-donate-label { grid-area: label; }
+  .mobile-menu nav .paypal-link { grid-area: paypal; }
+  .mobile-menu nav .gcash-link { grid-area: gcash; }
+  .mobile-menu nav .donate-option {
+    display: inline-flex;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    margin: 0;
+    padding: .32rem .65rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 /* contact page */
 .contact-page { max-width: 44rem; padding: 2.5rem 0 4rem; }
 .contact-page .eyebrow { color: var(--gold); font-family: 'Cinzel', serif; font-size: .95rem; }
