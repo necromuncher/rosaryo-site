@@ -1,5 +1,11 @@
 (function () {
-  if (localStorage.getItem('rosaryo-cookie-choice') === 'accepted') return;
+  let accepted = false;
+  try {
+    accepted = localStorage.getItem('rosaryo-cookie-choice') === 'accepted';
+  } catch (error) {
+    accepted = false;
+  }
+  if (accepted) return;
 
   const banner = document.createElement('aside');
   banner.className = 'cookie-banner';
@@ -11,9 +17,11 @@
   `;
   document.body.appendChild(banner);
 
-  requestAnimationFrame(() => banner.classList.add('visible'));
+  banner.classList.add('visible');
   banner.querySelector('button').addEventListener('click', () => {
-    localStorage.setItem('rosaryo-cookie-choice', 'accepted');
+    try {
+      localStorage.setItem('rosaryo-cookie-choice', 'accepted');
+    } catch (error) {}
     banner.classList.remove('visible');
     setTimeout(() => banner.remove(), 300);
   });

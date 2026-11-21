@@ -50,6 +50,13 @@
     });
   };
 
+  const updateThemeColor = () => {
+    const isLight = root.dataset.theme === 'light';
+    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.content = isLight ? '#f7f8fb' : '#0e1a33';
+    });
+  };
+
   window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('font-decrease')?.addEventListener('click', () => {
       const current = parseInt(root.style.fontSize || '100', 10);
@@ -82,6 +89,7 @@
         localStorage.removeItem('rosaryo-theme');
       }
       updateControls();
+      updateThemeColor();
     });
 
     ['font-decrease', 'font-increase'].forEach((id) => {
@@ -99,6 +107,7 @@
     });
 
     updateControls();
+    updateThemeColor();
     updateHeaderState();
     window.addEventListener('scroll', updateHeaderState, { passive: true });
   });
